@@ -1,15 +1,15 @@
-import users from "../data/users.json";
+import { Usertype } from "../types/user";
 
 type Props = {
   sort: { header: string; Sort: string };
   setSort: React.Dispatch<
     React.SetStateAction<{ header: string; Sort: string }>
   >;
+  users: Usertype[] | null;
 };
 
-const TableHeader = ({ sort, setSort }: Props) => {
-  const headers = Object.keys(users[0]);
-
+const TableHeader = ({ sort, setSort, users }: Props) => {
+  const headers = users ? Object.keys(users[0]) : [];
   function handleSort(header: string) {
     setSort({
       header: header,

@@ -1,17 +1,26 @@
 import { useParams } from "react-router-dom";
-
-import subscriptions from "../data/subscriptions.json";
+import useFetchJson from "../hooks/fetchJson";
+import { SubscriptionType } from "../types/subscription";
 
 const USerDetail = () => {
+  const {
+    data: subscriptions,
+    isLoading,
+    error,
+  } = useFetchJson<SubscriptionType[]>("/subscriptions.json");
+
   const { id } = useParams();
 
-  const subscriptionDetail = subscriptions.filter(
+  const subscriptionDetail = subscriptions?.filter(
     (subs) => Number(subs.user_id) == Number(id)
   );
 
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
     <div className="detail">
-      {subscriptionDetail.length > 0 ? (
+      {subscriptionDetail && subscriptionDetail.length > 0 ? (
         <div className="detail-container">
           <p>User ID: {subscriptionDetail[0].user_id}</p>
           <p>Package : {subscriptionDetail[0].package}</p>
