@@ -1,11 +1,11 @@
 import Header from "./components/Header";
-import Tabless from "./components/table";
+import User from "./page/User";
 
 function App() {
   return (
     <>
       <Header />
-      <Tabless />;
+      <User />;
     </>
   );
 }

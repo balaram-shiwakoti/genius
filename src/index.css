@@ -28,8 +28,6 @@ th,
 td {
   text-align: left;
   padding: 8px;
-}
-th {
   cursor: pointer;
 }
 
@@ -47,4 +45,24 @@ tr:nth-child(even) {
 .table-container {
   margin: 20px;
   padding: 50px;
+}
+.detail {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+.detail-container {
+  font-weight: 400;
+  font-size: 24px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  padding: 12px;
+  background-color: #535bf2;
+  width: 500px;
+  height: 250px;
+  border-radius: 20px;
+  color: white;
 }
