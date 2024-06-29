@@ -1,24 +1,20 @@
 import { useState } from "react";
 
+import TableBody from "./TableBody";
 import users from "../data/users.json";
+import TableHeader from "./TableHeader";
 import { Usertype } from "../types/user";
+import subscriptions from "../data/subscriptions.json";
 
-const Tabless = () => {
-  const headers = Object.keys(users[0]);
+type FilterProps = {
+  filter: string;
+};
 
+const Table = ({ filter }: FilterProps) => {
   const [sort, setSort] = useState({ header: "id", Sort: "asc" });
+  const [displayLimit, setDisplayLimit] = useState(50);
 
-  function handleHeaderClick(header: string) {
-    setSort({
-      header: header,
-      Sort:
-        header === sort.header
-          ? sort.Sort === "asc"
-            ? "desc"
-            : "asc"
-          : "desc",
-    });
-  }
+  //sort the array based on the header and sort type
   function sortedArray(array: Usertype[]) {
     if (sort.Sort === "asc") {
       return array.sort((a, b) => (a[sort.header] > b[sort.header] ? 1 : -1));
@@ -26,41 +22,39 @@ const Tabless = () => {
     return array.sort((a, b) => (a[sort.header] > b[sort.header] ? -1 : 1));
   }
 
-  return (
-    <div className="table-container">
-      <table>
-        <thead>
-          <tr>
-            {headers.map((header) => (
-              <th onClick={() => handleHeaderClick(header)} key={header}>
-                {header}
-              </th>
-            ))}
-          </tr>
-        </thead>
+  function filterUsers() {
+    const subscribedUserIds = subscriptions.map((sub) => sub.user_id);
+    if (filter === "all") {
+      return users;
+    } else if (filter === "subscribed") {
+      return users.filter((user) =>
+        subscribedUserIds.includes(String(user.id))
+      );
+    } else if (filter === "notsubscribed") {
+      return users.filter(
+        (user) => !subscribedUserIds.includes(String(user.id))
+      );
+    }
+    return users;
+  }
 
-        <tbody>
-          {sortedArray(users).map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.first_name}</td>
-              <td>{user.middle_name}</td>
-              <td>{user.last_name}</td>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>{user.password}</td>
-              <td>{user.active === "0" ? "Inactive" : "Active"}</td>
-              <td>{user.address}</td>
-              <td>{user.country}</td>
-              <td>
-                {new Date(Number(user.join_date) * 1000).toLocaleDateString()}
-              </td>
-            </tr>
-          ))}
-        </tbody>
+  const filteredUsers = sortedArray(filterUsers()).slice(0, displayLimit);
+
+  function loadMoreUsers() {
+    setDisplayLimit(displayLimit + 50);
+  }
+
+  return (
+    <>
+      <table>
+        <TableHeader sort={sort} setSort={setSort} />
+        <TableBody filteredUsers={filteredUsers} />
       </table>
-    </div>
+      {displayLimit < filterUsers().length && (
+        <button onClick={loadMoreUsers}>Load More</button>
+      )}
+    </>
   );
 };
 
-export default Tabless;
+export default Table;
