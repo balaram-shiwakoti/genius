@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Filter from "../components/Filter";
-import Table from "../components/Table";
 import { useSearchParams } from "react-router-dom";
+import Table from "../components/Table";
 
 const User = () => {
   const [searchParams] = useSearchParams();
