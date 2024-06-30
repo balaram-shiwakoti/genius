@@ -7,7 +7,7 @@ type FilterProps = {
 const Filter = ({ setFilter }: FilterProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   return (
-    <div>
+    <div className="custom-select">
       <label htmlFor="subscription">Filter :</label>
       <select
         value={searchParams.get("subscription") || "all"}
