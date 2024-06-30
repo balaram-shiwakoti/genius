@@ -1,5 +1,5 @@
-import { Usertype } from "../types/user";
 import { useNavigate } from "react-router-dom";
+import { Usertype } from "../../types/user";
 
 type Props = {
   filteredUsers: Usertype[];

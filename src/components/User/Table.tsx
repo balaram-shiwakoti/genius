@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import TableBody from "./TableBody";
 import TableHeader from "./TableHeader";
-import { Usertype } from "../types/user";
-import useFetchJson from "../hooks/fetchJson";
-import { SubscriptionType } from "../types/subscription";
+import { Usertype } from "../../types/user";
+import useFetchJson from "../../hooks/fetchJson";
+import { SubscriptionType } from "../../types/subscription";
 
 type FilterProps = {
   filter: string;
