@@ -1,11 +1,7 @@
 import SubscriptionDetail from "../components/UserDetail/SubscriptionDetail";
 
 const USerDetail = () => {
-  return (
-    <div className="detail">
-      <SubscriptionDetail />
-    </div>
-  );
+  return <SubscriptionDetail />;
 };
 
 export default USerDetail;

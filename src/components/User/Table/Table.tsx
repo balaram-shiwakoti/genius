@@ -2,9 +2,10 @@ import { useState } from "react";
 
 import TableBody from "./TableBody";
 import TableHeader from "./TableHeader";
-import { Usertype } from "../../types/user";
-import useFetchJson from "../../hooks/fetchJson";
-import { SubscriptionType } from "../../types/subscription";
+import { Usertype } from "../../../types/user";
+import useFetchJson from "../../../hooks/fetchJson";
+import { SubscriptionType } from "../../../types/subscription";
+import "./table.css";
 
 type FilterProps = {
   filter: string;
@@ -58,15 +59,17 @@ const Table = ({ filter }: FilterProps) => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   return (
-    <>
+    <div className="table-container">
       <table>
         <TableHeader users={users} sort={sort} setSort={setSort} />
         <TableBody filteredUsers={filteredUsers} />
       </table>
       {displayLimit < (filterUsers()?.length ?? 0) && (
-        <button onClick={loadMoreUsers}>Load More</button>
+        <button className="loadmore" onClick={loadMoreUsers}>
+          Load More
+        </button>
       )}
-    </>
+    </div>
   );
 };
 

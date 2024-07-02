@@ -1,5 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 
+import "./filter.css";
+
 type FilterProps = {
   setFilter: React.Dispatch<React.SetStateAction<string>>;
 };

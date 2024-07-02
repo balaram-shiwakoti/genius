@@ -1,4 +1,6 @@
 import { useParams } from "react-router-dom";
+
+import "./subscriptiondetail.css";
 import useFetchJson from "../../hooks/fetchJson";
 import { SubscriptionType } from "../../types/subscription";
 
@@ -18,7 +20,7 @@ const SubscriptionDetail = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   return (
-    <>
+    <div className="detail">
       {subscriptionDetail && subscriptionDetail.length > 0 ? (
         <div className="detail-container">
           <p>User ID: {subscriptionDetail[0].user_id}</p>
@@ -28,7 +30,7 @@ const SubscriptionDetail = () => {
       ) : (
         <p>No subscription found with the given ID.</p>
       )}
-    </>
+    </div>
   );
 };
 

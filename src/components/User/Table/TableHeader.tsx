@@ -1,4 +1,5 @@
-import { Usertype } from "../../types/user";
+import { Usertype } from "../../../types/user";
+import "./table.css";
 
 type Props = {
   sort: { header: string; Sort: string };
@@ -25,11 +26,7 @@ const TableHeader = ({ sort, setSort, users }: Props) => {
     <thead>
       <tr>
         {headers.map((header) => (
-          <th
-            onClick={() => handleSort(header)}
-            key={header}
-            className="sortable-header"
-          >
+          <th onClick={() => handleSort(header)} key={header}>
             {header}
           </th>
         ))}
