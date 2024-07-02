@@ -27,3 +27,4 @@ We can proceed installation by following steps listed below :
 - Visit `http://localhost:5173` in your browser.
 - Use filter to view the list of subscribed and unsubscribed users.
 - Click on data visualization to view visual representations of given data set.
+- User can click on table header to sort the table on ascending or descending order.
