@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: red;
+  font-size: 24px;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 20px;
+}
+
+.header-btn {
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.header-btn-user,
+.header-btn-data {
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #535bf2;
+  color: white;
+}

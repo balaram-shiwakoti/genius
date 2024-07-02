@@ -1,0 +1,31 @@
+.visualisation-container {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.piechart {
+  width: 500px;
+}
+
+.barchart {
+  width: 600px;
+}
+
+@media screen and (max-width: 600px) {
+  .visualisation-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .piechart {
+    width: 300px;
+  }
+
+  .barchart {
+    margin: 20px;
+    width: 300px;
+  }
+}

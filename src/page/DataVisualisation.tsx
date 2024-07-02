@@ -1,16 +1,17 @@
-import Header from "../components/User/Header";
+import Header from "../components/User/header/Header";
 import BarChart from "../components/Visualisation/BarChart";
 import PieChart from "../components/Visualisation/PieChart";
 
+import "../components/Visualisation/visualisation.css";
 const DataVisualisation = () => {
   return (
     <>
       <Header />
       <div className="visualisation-container">
-        <div style={{ width: 500 }}>
+        <div className="piechart">
           <PieChart />
         </div>
-        <div style={{ width: 500 }}>
+        <div className="barchart">
           <BarChart />
         </div>
       </div>
